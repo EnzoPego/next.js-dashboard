@@ -1,6 +1,7 @@
+
 import Image from "next/image";
-import { IoBrowsersOutline, IoCalculator, IoLogoReact } from "react-icons/io5";
 import { SidebarMenuItem } from "./SidebarMenuItem";
+import { IoBrowsersOutline, IoCalculator, IoFootball, IoLogoReact } from "react-icons/io5";
 
 const menuItems = [
   {
@@ -15,13 +16,19 @@ const menuItems = [
     title: "Counter",
     subTitle: "Contador Client Side",
   },
+  {
+    path: "/dashboard/pokemons",
+    icon: <IoFootball size={40} />,
+    title: "Pokemons",
+    subTitle: "Generación Estática",
+  },
 ];
 
 export const Sidebar = () => {
   return (
     <div
       id="menu"
-      className="bg-gray-900 min-h-screen z-10 text-slate-300  left-0 h-screen overflow-y-scroll w-[400px] "
+      className="bg-gray-900 min-h-screen z-10 text-slate-300  left-0 overflow-y-scroll w-[400px] "
     >
       <div id="logo" className="my-4 px-6">
         <h1 className="flex items-center text-lg md:text-2xl font-bold text-white">
@@ -35,7 +42,7 @@ export const Sidebar = () => {
       </div>
       <div id="profile" className="px-6 py-10">
         <p className="text-slate-500">Welcome back,</p>
-        <a href="#" className="inline-flex space-x-2 items-center">
+        {/* <a href="#" className="inline-flex space-x-2 items-center">
           <span>
             <Image
               className="rounded-full w-8 h-8"
@@ -46,7 +53,7 @@ export const Sidebar = () => {
             />
           </span>
           <span className="text-sm md:text-base font-bold">Enzo Pego</span>
-        </a>
+        </a> */}
       </div>
       <div id="nav" className="w-full px-6">
         
