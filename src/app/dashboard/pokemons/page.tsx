@@ -1,37 +1,40 @@
-
-
 import { PokemonGrid } from "@/pokemons/Components/PokemonGrid";
 import { PokemonsResponse } from "@/pokemons/interfaces/pokemons-response";
 import { SimplePokemon } from "@/pokemons/interfaces/simple-pokemon";
 
+export const metadata = {
+  title: "151 Pókemons",
+  description: "SEO Title",
+};
 
-const getPokemons = async(limit = 20, offset = 0): Promise<SimplePokemon[]> => {
-    const data: PokemonsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
-    .then(res =>res.json())
+const getPokemons = async (
+  limit = 20,
+  offset = 0
+): Promise<SimplePokemon[]> => {
+  const data: PokemonsResponse = await fetch(
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+  ).then((res) => res.json());
 
-    const pokemons = data.results.map( pokemon => ({
-        id: pokemon.url.split('/').at(-2)!,
-        name: pokemon.name
-    }))
+  const pokemons = data.results.map((pokemon) => ({
+    id: pokemon.url.split("/").at(-2)!,
+    name: pokemon.name,
+  }));
 
-    return pokemons
-}
-
+  return pokemons;
+};
 
 export default async function PokemonsPage() {
-    
-    const pokemons = await getPokemons(151)
-    //console.log(pokemons)
-
+  const pokemons = await getPokemons(151);
+  //console.log(pokemons)
 
   return (
     <div className="flex flex-col">
-
-        <span className="text-5xl my-2">Listado de Pókemons <small> estático </small></span>
-
-        <PokemonGrid pokemons={pokemons} />
-
       
+      <span className="text-5xl my-2">
+        Listado de Pókemons <small className="text-blue-700"> estático </small>
+      </span>
+
+      <PokemonGrid pokemons={pokemons} />
     </div>
   );
 }
